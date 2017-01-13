@@ -193,6 +193,7 @@ for(var i = 0; i < rentals.length;i++) //runs through rentals elements
 	var distance = 0;
 	var retDate = 0;
 	var amount = 0;
+	var reduction = 0;
 
 	
 	for(var k = 0; k <cars.length;k++) //runs through cars elements
@@ -235,6 +236,23 @@ for(var i = 0; i < rentals.length;i++) //runs through rentals elements
 			rentals[i].price = distance+time;
 			
 			console.log("New Rental Price : " + rentals[i].price);
+			
+			
+			// Exercice 3 
+			
+			// Give me all your money
+			
+			rentals[i].commission.assistance = retDate;  // road assistance -> 1€ per day
+			amount = rentals[i].price - rentals[i].commission.assistance;  // commission amount
+			rentals[i].commission.drivy = amount*0.3; // 30% of the rental price - drivy commission
+			rentals[i].commission.insurance =  (rentals[i].commission.drivy / 2); // insurance -> half of the commission
+			
+			console.log("Amount : " + amount);
+			console.log("Assistance commission : " + rentals[i].commission.assistance);
+		    console.log("Insurance commission : " + rentals[i].commission.insurance);
+			console.log("Drivy commission : " + rentals[i].commission.drivy);	
+				
+			console.log("==================");
 			
 			
 			
