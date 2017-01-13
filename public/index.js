@@ -321,7 +321,38 @@ for(var i = 0; i < rentals.length;i++) //runs through rentals elements
 			
 			console.log("==================");
 			
+				//Exercice 6
+				
+				// Rental Modifications 
+				
+			for(var p=0; p<rentalModifications.length; p++)
+			{
+				if(rentalModifications[p].rentalId == rentals[i].id)
+				{
+					if(rentalModifications[p].pickupDate != null) //check if the pickup date exists
+					{
+						rentals[i].pickupDate = rentalModifications[p].pickupDate; // set & change the  new pickup date
+						console.log("New pick up date : " + rentals[i].pickupDate);					
+					}
+					if(rentalModifications[p].rentalId != null) //check if the return date exists
+					{
+						rentals[i].returnDate = rentalModifications[p].returnDate; // set & change the new return date
+						console.log("New return date : " + rentals[i].returnDate);
+					}
+					if(rentalModifications[p].distance != null) //check if the distance exists
+					{
+						rentals[i].distance = rentalModifications[p].distance; //set the new distance
+						console.log("New distance : " + rentals[i].distance);
+					}
+					else
+					{
+						console.log("No changes");
+					}
+						
+				}				
+			}
 			
+		}
 				
 			
 		
