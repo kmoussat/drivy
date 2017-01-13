@@ -192,6 +192,7 @@ for(var i = 0; i < rentals.length;i++) //runs through rentals elements
 	var time = 0;
 	var distance = 0;
 	var retDate = 0;
+	var amount = 0;
 
 	
 	for(var k = 0; k <cars.length;k++) //runs through cars elements
@@ -213,30 +214,27 @@ for(var i = 0; i < rentals.length;i++) //runs through rentals elements
 			//Exercice 2
 			//Decreasing Price
 			
-			if(retDate => 1 && retDate < 4) 
+			if(retDate > 1) 
 			{
-			time = (cars[k].pricePerDay - cars[i].pricePerDay*0.1)*(date(rentals[i].pickupDate, rentals[i].returnDate)); // 10% after 1 day
+			time = (cars[k].pricePerDay - cars[i].pricePerDay*0.1)*(DateRetrieval(rentals[i].pickupDate, rentals[i].returnDate)); // 10% after 1 day
 
-			else if(retDate => 4 && retDate < 10)
+			if(retDate > 4)
 			{
-			time = (cars[k].pricePerDay - cars[i].pricePerDay*0.3)*(date(rentals[i].pickupDate, rentals[i].returnDate)); // 30% after 4 days
+			time = (cars[k].pricePerDay - cars[i].pricePerDay*0.3)*(DateRetrieval(rentals[i].pickupDate, rentals[i].returnDate)); // 30% after 4 days
 			}
 			
-			else if(retDate => 10)
+			if(retDate > 10)
 			{
-			time = (cars[k].pricePerDay - cars[i].pricePerDay*0.5)*(date(rentals[i].pickupDate, rentals[i].returnDate)); // 50% after 10 days
+			time = (cars[k].pricePerDay - cars[i].pricePerDay*0.5)*(DateRetrieval(rentals[i].pickupDate, rentals[i].returnDate)); // 50% after 10 days
 			}
 			}
 			else
 			{
-				time = cars[k].pricePerDay*(date(rentals[i].pickupDate, rentals[i].returnDate));
+				time = cars[k].pricePerDay*(DateRetrieval(rentals[i].pickupDate, rentals[i].returnDate));
 			}
 			rentals[i].price = distance+time;
 			
 			console.log("New Rental Price : " + rentals[i].price);
-			
-			
-			
 			
 			
 			
