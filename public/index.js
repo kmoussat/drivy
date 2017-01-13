@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 //list of cars
 //useful for ALL exercises
@@ -193,7 +193,7 @@ for(var i = 0; i < rentals.length;i++) //runs through rentals elements
 	var distance = 0;
 	var retDate = 0;
 	var amount = 0;
-	var reduction = 0;
+	var deductibleReduction = 0;
 
 	
 	for(var k = 0; k <cars.length;k++) //runs through cars elements
@@ -211,6 +211,7 @@ for(var i = 0; i < rentals.length;i++) //runs through rentals elements
 			
 			console.log("Rental Price : " + rentals[i].price); //rental price console log
 
+			
 			
 			//Exercice 2
 			//Decreasing Price
@@ -260,69 +261,23 @@ for(var i = 0; i < rentals.length;i++) //runs through rentals elements
 			// The famous deductible
 			
 			
-			if(rentals[i].options.reduction === true)
+			if(rentals[i].options.deductibleReduction == true)
 			{		
-				reduction = retDate*4;  // The driver is charged an additional 4€/day when he chooses the "deductible reduction" option.
-				rentals[i].price = rentals[i].price + reduction;
+				deductibleReduction = retDate*4;  // The driver is charged an additional 4€/day when he chooses the "deductible deductibleReduction" option.
+				rentals[i].price = rentals[i].price + deductibleReduction;
 				amount = rentals[i].price - rentals[i].commission.assistance; 
-				rentals[i].commission.drivy = amount*0.3 + retDate; // deductible reduction charge falls to drivy
+				rentals[i].commission.drivy = amount*0.3 + retDate; // deductible deductibleReduction charge falls to drivy
 				
 				console.log("Drivy commission after deductible reduction : " + rentals[i].commission.drivy);
 			}
 			else
 			{
-				console.log("The driver did not take the deductible reductions system");
+				console.log("The driver did not take the deductible reduction system");
 			}
 				
 				
 				
-				//Exercice 5
-				
-				// Pay the actors
-				
-				for (var l = 0; l < actors.length; l++) //runs through the actors elements
-			{
-				if(actors[l].rentalId == rentals[i].id)
-				{
-					for(var m =0; m < actors[l].payment.length; m++) //runs through the actors.payment elements
-					{
-						switch(actors[l].payment[m].who)
-						{
-							case "driver":
-								actors[l].payment[m].amount = rentals[i].price; //the driver must pay the rental price and the (optional) deductible reduction
-								console.log("The driver owes : " + actors[l].payment[m].amount);
-							break;
-							
-							case "owner":
-								actors[l].payment[m].amount = rentals[i].price - rentals[i].commission.drivy; //the owner receives the rental price minus the commission
-								console.log("The owner is paid : " + actors[l].payment[m].amount);
-							break;
-							
-							case "insurance":
-								actors[l].payment[m].amount = rentals[i].commission.insurance; //the insurance receives its part of the commission
-							    console.log("The insurance receives : " + actors[l].payment[m].amount);
-							break;
-							
-							case "assistance":
-								actors[l].payment[m].amount = rentals[i].commission.assistance; //the assistance receives its part of the commission
-								console.log("The assistance receives : " + actors[l].payment[m].amount);
-							break;
-							
-							case "drivy":
-								actors[l].payment[m].amount = rentals[i].commission.drivy + reduction ; //drivy receives its part of the commission, plus the deductible reduction
-								console.log("Drivy receives : " + actors[l].payment[m].amount);
-							break;
-
-						}
-
-					}
-				}
-			}
 			
-			console.log("==================");
-			
-			
-		}
 		
 	}
 }
