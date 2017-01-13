@@ -81,6 +81,10 @@ var rentals = [{
   }
 }];
 
+
+
+
+
 //list of actors for payment
 //useful from exercise 5
 var actors = [{
@@ -154,6 +158,7 @@ var actors = [{
   }]
 }];
 
+
 //list of rental modifcation
 //useful for exercise 6
 var rentalModifications = [{
@@ -164,6 +169,38 @@ var rentalModifications = [{
   'rentalId': '3-sa-92',
   'pickupDate': '2015-12-05'
 }];
+
+
+// Exercice 1 - Euro-Kilometer
+// Price for each driver
+
+function RentalPrice()
+ {
+ 	for (var i = 0; i < 3; i++)
+ 	{
+ 		var timeNow = new Date(rentals[i].returnDate).getDate();
+		var timePickup = new Date(rentals[i].pickupDate).getDate() + 1;
+		var carPriceDay = cars[i].pricePerDay;
+		
+		var time = (timeNow - timePickup) * carPriceDay;
+		
+		var carPriceKm = cars[i].pricePerKm;
+ 		var distancePerRentals = rentals[i].distance;
+		
+		var distance = carPriceKm * distancePerRentals;
+		
+ 		rentals[i].price = time + distance;
+ 	}
+ }
+ 
+
+ 
+ RentalPrice();
+
+
+
+
+
 
 console.log(cars);
 console.log(rentals);
