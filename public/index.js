@@ -174,28 +174,50 @@ var rentalModifications = [{
 // Exercice 1 - Euro-Kilometer
 // Price for each driver
 
-function RentalPrice()
- {
- 	for (var i = 0; i < 3; i++)
- 	{
- 		var timeNow = new Date(rentals[i].returnDate).getDate();
-		var timePickup = new Date(rentals[i].pickupDate).getDate() + 1;
-		var carPriceDay = cars[i].pricePerDay;
-		
-		var time = (timeNow - timePickup) * carPriceDay;
-		
-		var carPriceKm = cars[i].pricePerKm;
- 		var distancePerRentals = rentals[i].distance;
-		
-		var distance = carPriceKm * distancePerRentals;
-		
- 		rentals[i].price = time + distance;
- 	}
- }
- 
 
- 
- RentalPrice();
+// Retrieve and calculate the date 
+function DateRetrieval(pickup, back)
+{
+	
+	var datePickup = new Date(pickup); //convert the pickup date to a date format
+	var pick = datePickup.getDate(); //retrieve the day of the date
+	var dateReturn = new Date(back); //convert the return date to a date format
+ 	var ret = dateReturn.getDate(); 
+
+	return (ret - pick) + 1;
+}
+
+for(var i = 0; i < rentals.length;i++) //runs through rentals elements
+{
+	var time = 0;
+	var distance = 0;
+	var retDate = 0;
+
+	
+	for(var k = 0; k <cars.length;k++) //runs through cars elements
+	{
+		if(rentals[i].carId == cars[k].id)
+		{
+			
+			retDate = DateRetrieval(rentals[i].pickupDate, rentals[i].returnDate);  //retrieve the days the car has been rented
+			
+			distance = cars[k].pricePerKm * rentals[i].distance;  // distance & price
+			
+			//
+			time = cars[k].pricePerDay*retDate; // time the car has been rented 
+			rentals[i].price = distance+time; // rental price
+			
+			console.log("Rental Price : " + rentals[i].price); //rental price console log
+
+			
+		
+			
+			
+			
+			
+		}
+	}
+}
 
 
 
