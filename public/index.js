@@ -210,7 +210,32 @@ for(var i = 0; i < rentals.length;i++) //runs through rentals elements
 			console.log("Rental Price : " + rentals[i].price); //rental price console log
 
 			
-		
+			//Exercice 2
+			//Decreasing Price
+			
+			if(retDate => 1 && retDate < 4) 
+			{
+			time = (cars[k].pricePerDay - cars[i].pricePerDay*0.1)*(date(rentals[i].pickupDate, rentals[i].returnDate)); // 10% after 1 day
+
+			else if(retDate => 4 && retDate < 10)
+			{
+			time = (cars[k].pricePerDay - cars[i].pricePerDay*0.3)*(date(rentals[i].pickupDate, rentals[i].returnDate)); // 30% after 4 days
+			}
+			
+			else if(retDate => 10)
+			{
+			time = (cars[k].pricePerDay - cars[i].pricePerDay*0.5)*(date(rentals[i].pickupDate, rentals[i].returnDate)); // 50% after 10 days
+			}
+			}
+			else
+			{
+				time = cars[k].pricePerDay*(date(rentals[i].pickupDate, rentals[i].returnDate));
+			}
+			rentals[i].price = distance+time;
+			
+			console.log("New Rental Price : " + rentals[i].price);
+			
+			
 			
 			
 			
