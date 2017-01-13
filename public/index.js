@@ -252,11 +252,30 @@ for(var i = 0; i < rentals.length;i++) //runs through rentals elements
 		    console.log("Insurance commission : " + rentals[i].commission.insurance);
 			console.log("Drivy commission : " + rentals[i].commission.drivy);	
 				
-			console.log("==================");
+		
 			
 			
+			//Exercice 4
 			
+			// The famous deductible
+			
+			
+			if(rentals[i].options.reduction === true)
+			{		
+				reduction = retDate*4;  // The driver is charged an additional 4€/day when he chooses the "deductible reduction" option.
+				rentals[i].price = rentals[i].price + reduction;
+				amount = rentals[i].price - rentals[i].commission.assistance; 
+				rentals[i].commission.drivy = amount*0.3 + retDate; // deductible reduction charge falls to drivy
+				
+				console.log("Drivy commission after deductible reduction : " + rentals[i].commission.drivy);
+			}
+			else
+			{
+				console.log("The driver did not take the deductible reductions system");
+			}
+				console.log("==================");
 		}
+		
 	}
 }
 
